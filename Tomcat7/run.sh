@@ -2,6 +2,8 @@
 
 export CATALINA_HOME=/opt/tomcat7
 
+chown -R www:www /opt/tomcat7
+
 echo "=> Update tomcat-users.xml file with Environment Variable:JMX_User,JMX_Password"
 echo '<?xml version="1.0" encoding="utf-8"?>' > ${CATALINA_HOME}/conf/tomcat-users.xml
 

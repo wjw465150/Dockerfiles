@@ -67,6 +67,4 @@ EXPOSE 8080 8443 8005 5678
 
 WORKDIR /opt/tomcat7
 
-VOLUME ["/opt/tomcat7/webapps", "/opt/tomcat7/logs", "/opt/tomcat7/work", "/opt/tomcat7/temp", "/tmp/hsperfdata_root"]
-
 CMD ["/run.sh"]

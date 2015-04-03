@@ -8,14 +8,11 @@ FROM centos:centos6
 
 MAINTAINER wjw465150 <wjw465150@gmail.com>
 
-ADD start.sh /
-
 RUN yum install -y java-1.7.0-openjdk wget tar && \
 wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz | tar -zxvf - -C /opt && \
     mv /opt/zookeeper-3.4.6 /opt/zookeeper && \
     cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg && \
-    mkdir -p /tmp/zookeeper && \
-chmod +x /start.sh
+    mkdir -p /tmp/zookeeper
 
 ENV JAVA_HOME /usr/lib/jvm/jre-1.7.0-openjdk.x86_64
 
@@ -25,5 +22,5 @@ WORKDIR /opt/zookeeper
 
 VOLUME ["/opt/zookeeper/conf", "/tmp/zookeeper"]
 
-
-CMD ["/bin/bash", "/start.sh"]
+ENTRYPOINT ["/opt/zookeeper/bin/zkServer.sh"]
+CMD ["start-foreground"]

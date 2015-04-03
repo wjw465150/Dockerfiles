@@ -44,8 +44,3 @@ ENV SPRING_profiles -Dspring.profiles.active=production
 ENV JMX_User tomcat
 ENV JMX_Password tomcat
 ```  
-
-#### [3] Volumes:
-```
-VOLUME ["/opt/tomcat7/webapps", "/opt/tomcat7/logs", "/opt/tomcat7/work", "/opt/tomcat7/temp", "/tmp/hsperfdata_root"]
-```  
