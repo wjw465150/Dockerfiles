@@ -10,7 +10,7 @@ MAINTAINER wjw465150 <wjw465150@gmail.com>
 
 # Install dependence.
 RUN \
-  yum -y install unzip tar wget gcc make file
+  yum -y install unzip tar wget gcc make file automake autoconf libtool
 
 #wget http://www.monkey.org/~provos/libevent-1.4.13-stable.tar.gz && \
 COPY ./libevent-1.4.13-stable.tar.gz /tmp/
@@ -24,18 +24,13 @@ RUN cd /tmp/ && \
  make && \
  make install
   
-#wget http://downloads.sourceforge.net/repcached/memcached-1.2.8-repcached-2.2.1.tar.gz
-COPY ./memcached-1.2.8-repcached-2.2.1.tar.gz /tmp/
+COPY ./memcached-1.4.13-repcached-2.3.1.tar.gz /tmp/
 
 RUN cd /tmp && \
- tar -zxvf ./memcached-1.2.8-repcached-2.2.1.tar.gz
+ tar -zxvf ./memcached-1.4.13-repcached-2.3.1.tar.gz
 
-COPY ./memcached.c /tmp/memcached-1.2.8-repcached-2.2.1/
-
-RUN cd /tmp/memcached-1.2.8-repcached-2.2.1 && \
+RUN cd /tmp/memcached-1.4.13-repcached-2.3.1 && \
  ./configure --with-libevent=/usr/local/lib/ --enable-replication --enable-64bit && \
- make uninstall && \
- make clean && \
  make && \
  make install
 
