@@ -59,11 +59,13 @@ ENV JVM_MaxPermSize -XX:MaxPermSize=512m
  
 ENV SPRING_profiles -Dspring.profiles.active=production
  
+ENV JMX_Host 0.0.0.0
+ENV JMX_Port 5678
 ENV JMX_User tomcat
 ENV JMX_Password tomcat
 
 #export port
-EXPOSE 8080 8443 8005 5678
+EXPOSE 8080 8443 8005 $JMX_Port
 
 WORKDIR /opt/tomcat7
 
