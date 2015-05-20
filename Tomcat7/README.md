@@ -21,7 +21,7 @@ JMX_Password=tomcat
 
 #### [2]save that file somewhere (like `.env`). Then:
 ```
-docker run -d -p 8080:8080 -p 8443:8443 --env-file=./.env --name tomcat7 wjw465150/tomcat7
+docker run -d -p 8080:8080 -p 8443:8443 -p 5678:5678 --env-file=./.env --name tomcat7 wjw465150/tomcat7
 ```
 
 #### [3] or by specifying the variables as part of the `docker run` command:  
@@ -29,12 +29,7 @@ docker run -d -p 8080:8080 -p 8443:8443 --env-file=./.env --name tomcat7 wjw4651
 docker run -d -p 8080:8080 -p 8443:8443 -p 5678:5678 -e JVM_Xms=-Xms256m -e JMX_Host=192.168.2.12 -e JMX_Port=5678 -e JMX_User=jmx -e JMX_Password=jmx -v /opt/ROOT_webapps:/opt/tomcat7/webapps --name tomcat7 wjw465150/tomcat7
 ```  
 ### Notes:
-#### [1] Ports:
-```
-EXPOSE 8080 8443 8005 $JMX_Port
-```  
-
-#### [2] Environment Variable:  
+#### [1] Environment Variable:  
 ```
 ENV JVM_Xms -Xms512m
 ENV JVM_Xmx -Xmx1g
@@ -47,4 +42,9 @@ ENV JMX_Host 0.0.0.0
 ENV JMX_Port 5678
 ENV JMX_User tomcat
 ENV JMX_Password tomcat
+```  
+
+#### [2] Ports:
+```
+EXPOSE 8080 8443 8005 $JMX_Port
 ```  
