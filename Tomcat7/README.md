@@ -46,5 +46,5 @@ ENV JMX_Password tomcat
 
 #### [2] Ports:
 ```
-EXPOSE 8080 8443 8005 $JMX_Port
+EXPOSE 8080 8443
 ```  
