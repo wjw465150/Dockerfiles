@@ -8,19 +8,30 @@ FROM centos:centos6
 
 MAINTAINER wjw465150 <wjw465150@gmail.com>
 
-RUN yum install -y java-1.7.0-openjdk wget tar && \
-wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz | tar -zxvf - -C /opt && \
-    mv /opt/zookeeper-3.4.6 /opt/zookeeper && \
-    cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg && \
-    mkdir -p /tmp/zookeeper
+ADD run.sh /run.sh
 
-ENV JAVA_HOME /usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+COPY ./jdk-7u76-linux-x64.rpm /opt/
+COPY ./zookeeper.tar.gz /opt/
 
+RUN yum install -y sed grep unzip tar wget file && \
+  cd /opt/ && \
+  rpm -ivh ./jdk-7u76-linux-x64.rpm && \
+  tar -zxvf ./zookeeper.tar.gz && \
+  chmod +x /opt/zookeeper/bin/*.sh && \
+  rm -f /opt/zookeeper.tar.gz && \
+  rm -f /opt/jdk-7u76-linux-x64.rpm && \
+  chmod +x /run.sh
+  
+# Environment Variable
+ENV JAVA_HOME /usr/java/default 
+
+ENV JVMFLAGS -Xmx1g
+
+#export port
 EXPOSE 2181 2888 3888
 
-WORKDIR /opt/zookeeper
+WORKDIR /opt/zookeeper/bin
 
-VOLUME ["/opt/zookeeper/conf", "/tmp/zookeeper"]
+VOLUME ["/opt/zookeeper/conf", "/opt/zookeeper/log", "/opt/zookeeper/zdata"]
 
-ENTRYPOINT ["/opt/zookeeper/bin/zkServer.sh"]
-CMD ["start-foreground"]
+CMD ["/run.sh"]
