@@ -4,6 +4,13 @@ Dockerfile-Tomcat7
 Dockerfile For Tomcat7
 
 ### To run:
+
+#### [0] create www group and user:
+```
+/usr/sbin/groupadd www
+/usr/sbin/useradd -g www www 
+```
+
 #### [1] specify the environment either by creating a file with contents like so:  
 ```
 JVM_Xms=-Xms512m

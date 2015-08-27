@@ -41,7 +41,6 @@ groupadd www -g 58 && \
   useradd -u 58 -g www www  && \ 
   cd /opt/ && \
   tar -zxvf ./tomcat7.tar.gz && \
-  mkdir /opt/tomcat7/temp && \
   chown -R www:www /opt/tomcat7 && \
   chmod +x /opt/tomcat7/bin/tomcat && \
   chmod +x /opt/tomcat7/wrapper_home/sbin/wrapper* && \
