@@ -10,16 +10,16 @@ MAINTAINER wjw465150 <wjw465150@gmail.com>
 
 ADD run.sh /run.sh
 
-COPY ./jdk-7u76-linux-x64.rpm /opt/
+COPY ./jdk-7u80-linux-x64.rpm /opt/
 COPY ./zookeeper.tar.gz /opt/
 
 RUN yum install -y sed grep unzip tar wget file && \
   cd /opt/ && \
-  rpm -ivh ./jdk-7u76-linux-x64.rpm && \
+  rpm -ivh ./jdk-7u80-linux-x64.rpm && \
   tar -zxvf ./zookeeper.tar.gz && \
   chmod +x /opt/zookeeper/bin/*.sh && \
   rm -f /opt/zookeeper.tar.gz && \
-  rm -f /opt/jdk-7u76-linux-x64.rpm && \
+  rm -f /opt/jdk-7u80-linux-x64.rpm && \
   chmod +x /run.sh
   
 # Environment Variable

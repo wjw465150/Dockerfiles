@@ -10,14 +10,14 @@ MAINTAINER wjw465150 <wjw465150@gmail.com>
 
 ADD run.sh /run.sh
   
-COPY ./jdk-7u76-linux-x64.rpm /tmp/  
+COPY ./jdk-7u80-linux-x64.rpm /tmp/  
 COPY ./apr-1.5.1.tar.gz /tmp/
 COPY ./apr-util-1.5.4.tar.gz /tmp/  
 COPY ./tomcat-native-1.1.33-src.tar.gz /tmp/  
 COPY ./tomcat7.tar.gz /opt/  
 
 RUN yum -y install sed grep unzip tar wget gcc make file openssl openssl-devel && \ 
-rpm -ivh ./tmp/jdk-7u76-linux-x64.rpm && \
+rpm -ivh ./tmp/jdk-7u80-linux-x64.rpm && \
 cd /tmp/ && \
   tar -zxvf apr-1.5.1.tar.gz && \
   cd ./apr-1.5.1  && \
