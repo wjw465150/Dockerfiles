@@ -32,7 +32,7 @@ cd /tmp/ && \
   make install && \
 cd /tmp/ && \
   tar -zxvf ./tomcat-native-1.2.2-src.tar.gz && \
-  cd ./tomcat-native-1.2.2-src/jni/native/ && \
+  cd ./tomcat-native-1.2.2-src/native/ && \
   export JAVA_HOME=/usr/java/default && \
   ./configure --with-apr=/usr/local/apr --with-ssl=yes && \
   make && \
