@@ -13,7 +13,7 @@ ADD run.sh /run.sh
 COPY ./jdk-7u80-linux-x64.rpm /tmp/  
 COPY ./apr-1.5.1.tar.gz /tmp/
 COPY ./apr-util-1.5.4.tar.gz /tmp/  
-COPY ./tomcat-native-1.1.33-src.tar.gz /tmp/  
+COPY ./tomcat-native-1.2.2-src.tar.gz /tmp/  
 COPY ./tomcat7.tar.gz /opt/  
 
 RUN yum -y install sed grep unzip tar wget gcc make file openssl openssl-devel && \ 
@@ -31,8 +31,8 @@ cd /tmp/ && \
   make && \
   make install && \
 cd /tmp/ && \
-  tar -zxvf ./tomcat-native-1.1.33-src.tar.gz && \
-  cd ./tomcat-native-1.1.33-src/jni/native/ && \
+  tar -zxvf ./tomcat-native-1.2.2-src.tar.gz && \
+  cd ./tomcat-native-1.2.2-src/jni/native/ && \
   export JAVA_HOME=/usr/java/default && \
   ./configure --with-apr=/usr/local/apr --with-ssl=yes && \
   make && \
