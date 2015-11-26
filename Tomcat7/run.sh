@@ -24,4 +24,4 @@ echo "    ${JMX_User}:${JMX_Password}"
 echo ""
 echo "========================================================================"
 
-su www -c '${CATALINA_HOME}/bin/tomcat console'
+exec su www -c '${CATALINA_HOME}/bin/tomcat console'

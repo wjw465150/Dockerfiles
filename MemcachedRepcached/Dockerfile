@@ -34,7 +34,7 @@ RUN cd /tmp/memcached-1.4.13-repcached-2.3.1 && \
  make && \
  make install
 
-RUN ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2 & \ 
+RUN ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2 && \ 
  rm -rf /tmp/*
 
 # Expose ports.
