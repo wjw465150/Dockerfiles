@@ -11,13 +11,20 @@ MAINTAINER wjw465150 <wjw465150@gmail.com>
 ADD run.sh /run.sh
   
 COPY ./jdk-7u80-linux-x64.rpm /tmp/  
+COPY ./openssl-1.0.2g.tar.gz /tmp/
 COPY ./apr-1.5.1.tar.gz /tmp/
 COPY ./apr-util-1.5.4.tar.gz /tmp/  
-COPY ./tomcat-native-1.2.2-src.tar.gz /tmp/  
+COPY ./tomcat-native-1.2.5-src.tar.gz /tmp/  
 COPY ./tomcat7.tar.gz /opt/  
 
-RUN yum -y install sed grep unzip tar wget gcc make file openssl openssl-devel && \ 
+RUN yum -y install sed grep unzip tar wget gcc make file perl && \ 
 rpm -ivh ./tmp/jdk-7u80-linux-x64.rpm && \
+cd /tmp/ && \
+  tar -zxvf openssl-1.0.2g.tar.gz && \
+  cd ./openssl-1.0.2g && \
+  ./config -fPIC enable-shared && \
+  make && \
+  make install && \
 cd /tmp/ && \
   tar -zxvf apr-1.5.1.tar.gz && \
   cd ./apr-1.5.1  && \
@@ -31,10 +38,10 @@ cd /tmp/ && \
   make && \
   make install && \
 cd /tmp/ && \
-  tar -zxvf ./tomcat-native-1.2.2-src.tar.gz && \
-  cd ./tomcat-native-1.2.2-src/native/ && \
+  tar -zxvf ./tomcat-native-1.2.5-src.tar.gz && \
+  cd ./tomcat-native-1.2.5-src/native/ && \
   export JAVA_HOME=/usr/java/default && \
-  ./configure --with-apr=/usr/local/apr --with-ssl=yes && \
+  ./configure --with-apr=/usr/local/apr --with-ssl=/usr/local/ssl && \
   make && \
   make install && \
 groupadd www -g 58 && \
