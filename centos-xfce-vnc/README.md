@@ -29,3 +29,7 @@ the docker run command:
 ### Contact
 For questions or maybe some hints, feel free to contact us via **[wjw465150@gmail.com](mailto:wjw465150@gmail.com)**
 
+### install lastest firefox
++ download lastest firefox for linux 64`http://download.firefox.com.cn/releases/firefox/47.0/zh-CN/Firefox-latest-x86_64.tar.bz2`  
++ uncompress`tar xvf ./Firefox-lastest-x86_64.tar.bz2`  
++ replace all files in `/usr/lib64/firefox`  
